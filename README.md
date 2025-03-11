@@ -8,27 +8,27 @@ This project consists of two main components:
 
 🎮 Admin Panel (Web Dashboard for Educators)
 
-Create and manage games
+- Create and manage games
 
-Design educational content (quizzes, puzzles, quests)
+- Design educational content (quizzes, puzzles, quests)
 
-Track student progress
+- Track student progress
 
-Generate game access codes
+- Generate game access codes
 
-View game reports and analytics
+- View game reports and analytics
 
 📱 Mobile App (React Native Application for Students)
 
-Join games using access codes
+- Join games using access codes
 
-Complete various educational challenges
+- Complete various educational challenges
 
-Engage in location-based tasks
+- Engage in location-based tasks
 
-Solve puzzles and quizzes
+- Solve puzzles and quizzes
 
-Track progress and scores
+- Track progress and scores
 
 🚀 Features
 
@@ -44,25 +44,25 @@ Mobile App Features
 
 Admin Panel
 
-Frontend: HTML5, CSS3, JavaScript
+- Frontend: HTML5, CSS3, JavaScript
 
-Backend: Node.js, Express
+- Backend: Node.js, Express
 
-Database: Firebase Firestore
+- Database: Firebase Firestore
 
-Authentication: Firebase Auth
+- Authentication: Firebase Auth
 
-File Storage: Firebase Storage
+- File Storage: Firebase Storage
 
 Mobile App
 
-React Native
+- React Native
 
-Expo
+- Expo
 
-React Navigation
+- React Navigation
 
-Firebase Integration
+- Firebase Integration
 
 📩 Contact
 
