@@ -1,0 +1,291 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Settings - Game Dashboard</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./Image/NHLStenden_Logo.png">
+  <script type="module" src="/js/firebase.js" defer></script>
+  <script type="module" src="/js/auth.js" defer></script>
+  <script type="module" src="/js/content-management.js" defer></script>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <img src="./Image/NHLStenden_Logo.png">
+    </div>
+    <nav>
+      <button onclick="window.location.href='index.html'">Game Setting</button>
+      <button class="active">Content Setting</button>
+      <button onclick="window.location.href='game-report.html'">Game Report</button>
+      <button onclick="window.location.href='object-recognition.html'">Object Recognition</button>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <h1>Content Settings</h1>
+      <div class="user-info">
+        <div class="user-info-text">
+          <span id="username">User Name</span>
+          <span id="user-role" class="user-role">Admin</span>
+          <button id="logoutBtn" class="logout" aria-label="Logout">Log out</button>
+        </div>
+        <div class="file-photo">
+          <img src="./Image/adminPhoto.png" alt="adminPhoto">
+        </div>
+      </div>
+    </header>
+
+    <section class="content-section">
+      <h2>Your Content</h2>
+      <div class="content-tabs">
+        <div class="content-actions">
+          <button class="create-btn" id="add-quest">+ Quest</button>
+          <button class="create-btn" id="add-puzzle">+ Puzzle</button>
+          <button class="create-btn" id="add-quiz">+ Quiz</button>
+        </div>
+      </div>
+      
+      <div class="content-list" id="content-list">
+        <!-- Content cards will be dynamically rendered here -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Content Creation Modal -->
+  <div id="content-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="content-modal-title">Create New Content</h2>
+      <!-- Quest Form -->
+      <form id="quest-form" class="hidden">
+        <div class="form-group">
+          <h3>Task</h3>
+          <textarea id="quest-description" placeholder="Description of the task..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <h3>Points Value</h3>
+          <input type="number" id="quest-points" placeholder="Number of points awarded for a correct answer..." required />
+        </div>
+
+        <div class="form-group">
+          <h3>Object Recognition</h3>
+          <div class="toggle-switch">
+            <input type="checkbox" id="quest-object-recognition" />
+            <label for="quest-object-recognition"></label>
+          </div>
+          <select id="quest-recognition-item" class="hidden">
+          </select>
+        </div>
+
+        <div class="form-group">
+          <h3>Location Tracking</h3>
+          <div class="toggle-switch">
+            <input type="checkbox" id="quest-location-tracking" />
+            <label for="quest-location-tracking"></label>
+          </div>
+          <select id="quest-room-select" class="hidden">
+            <option value="1.036">Room 1.036</option>
+            <option value="1.016">Room 1.016</option>
+            <option value="1.008">Room 1.008</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <h3>GPS Tracking</h3>
+          <div class="toggle-switch">
+            <input type="checkbox" id="quest-gps-tracking" />
+            <label for="quest-gps-tracking"></label>
+          </div>
+          <select id="quest-location-select" class="hidden">
+            <option value="campus">Campus Entrance</option>
+            <option value="carpark">Car Park</option>
+            <option value="bicycle">Bicycle Shed</option>
+          </select>
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" class="save-btn">Add</button>
+          <button type="button" class="cancel-btn">Cancel</button>
+        </div>
+      </form>
+
+      <!-- Puzzle Form -->
+      <form id="puzzle-form" class="hidden">
+        <div class="form-group">
+          <h3>Puzzle Question</h3>
+          <textarea id="content-description" placeholder="Description of the Question..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <div id="image-choices-container">
+            <div class="image-choice-item">
+              <input type="radio" name="correct-image" value="0" required>
+              <div class="image-upload-area">
+                <div class="image-placeholder">
+                  <img src="#" alt="Image Will be Shown Here" class="preview-image hidden">
+                  <span class="placeholder-text">Image Will be Shown Here</span>
+                </div>
+                <div class="upload-info">
+                  <div class="supported-formats">Supported formats: JPEG, PNG, JPG</div>
+                  <label class="upload-btn">
+                    UPLOAD FILE
+                    <input type="file" class="file-input" accept=".jpg,.jpeg,.png" hidden>
+                  </label>
+                </div>
+                <button type="button" class="remove-image">×</button>
+              </div>
+            </div>
+          </div>
+          <button type="button" id="add-image" class="add-image-btn">+</button>
+        </div>
+
+        <div class="form-group">
+          <h3>Points Value</h3>
+          <input type="number" id="points-value" placeholder="Number of points awarded for a correct answer..." required />
+        </div>
+
+        <div class="form-group">
+          <h3>Location Tracking</h3>
+          <div class="toggle-switch">
+            <input type="checkbox" id="location-tracking" />
+            <label for="location-tracking"></label>
+          </div>
+          <select id="room-select" class="hidden">
+            <option value="1.036">Room 1.036</option>
+            <option value="1.016">Room 1.016</option>
+            <option value="1.008">Room 1.008</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <h3>GPS Tracking</h3>
+          <div class="toggle-switch">
+            <input type="checkbox" id="gps-tracking" />
+            <label for="gps-tracking"></label>
+          </div>
+          <select id="location-select" class="hidden">
+            <option value="campus">Campus Entrance</option>
+            <option value="carpark">Car Park</option>
+            <option value="bicycle">Bicycle Shed</option>
+          </select>
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" class="save-btn">Save</button>
+          <button type="button" id="close-content-modal" class="cancel-btn">Cancel</button>
+        </div>
+      </form>
+
+      <!-- Quiz Form -->
+      <form id="quiz-form" class="hidden">
+        <div class="form-group">
+          <h3>Quiz Question</h3>
+          <textarea id="quiz-question" placeholder="Details of the question..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <h3>Click the Standard Answer</h3>
+          <div id="choices-container">
+            <div class="choice-item">
+              <input type="radio" name="correct-answer" value="0" required>
+              <input type="text" class="choice-input" placeholder="The main content of the Choice..." required>
+              <button type="button" class="remove-choice">×</button>
+            </div>
+          </div>
+          <button type="button" id="add-choice" class="add-choice-btn">+</button>
+        </div>
+
+        <div class="form-group">
+          <h3>Points Value</h3>
+          <input type="number" id="quiz-points" placeholder="Number of points awarded for a correct answer..." required />
+        </div>
+
+        <div class="form-group">
+          <h3>Location Tracking</h3>
+          <div class="toggle-switch">
+            <input type="checkbox" id="quiz-location-tracking" />
+            <label for="quiz-location-tracking"></label>
+          </div>
+          <select id="quiz-room-select" class="hidden">
+            <option value="1.036">Room 1.036</option>
+            <option value="1.016">Room 1.016</option>
+            <option value="1.008">Room 1.008</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <h3>GPS Tracking</h3>
+          <div class="toggle-switch">
+            <input type="checkbox" id="quiz-gps-tracking" />
+            <label for="quiz-gps-tracking"></label>
+          </div>
+          <select id="quiz-gps-location" class="hidden">
+            <option value="campus">Campus Entrance</option>
+            <option value="carpark">Car Park</option>
+            <option value="bicycle">Bicycle Shed</option>
+          </select>
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" class="save-btn">Add</button>
+          <button type="button" class="cancel-btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Content Details Modal -->
+  <div id="content-details-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Content Details</h2>
+      <div id="content-details-container">
+        <!-- Content details will be dynamically populated here -->
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="close-details-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div id="edit-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Edit Game</h2>
+      <form id="edit-form">
+        <label>
+          Game Name:
+          <input type="text" id="edit-game-name" required />
+        </label>
+        <label>
+          Game ID:
+          <input type="text" id="edit-game-id" required disabled />
+        </label>
+        <label>
+          Shuffle Content:
+          <input type="checkbox" id="edit-shuffle-content" />
+        </label>
+        <label>
+          Status:
+          <select id="edit-game-status">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </label>
+        <label>
+          Select Content:
+          <select id="edit-game-content" multiple>
+            <!-- Options will be dynamically populated -->
+          </select>
+        </label>
+        <div class="modal-actions">
+          <button type="submit" class="save-btn">Save Changes</button>
+          <button type="button" id="close-edit-modal" class="cancel-btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html> 

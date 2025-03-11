@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Report - Game Dashboard</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./Image/NHLStenden_Logo.png">
+  <script type="module" src="/js/firebase.js" defer></script>
+  <script type="module" src="/js/auth.js" defer></script>
+  <script type="module" src="/js/gamereport.js" defer></script>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <img src="./Image/NHLStenden_Logo.png">
+    </div>
+    <nav>
+      <button onclick="window.location.href='index.html'">Game Setting</button>
+      <button onclick="window.location.href='content-settings.html'">Content Setting</button>
+      <button class="active">Game Report</button>
+      <button onclick="window.location.href='object-recognition.html'">Object Recognition</button>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <div class="header-left">
+        <h1>Game Report</h1>
+      </div>
+      <div class="user-info">
+        <div class="user-info-text">
+          <span id="username">User Name</span>
+          <span id="user-role" class="user-role">Admin</span>
+          <button id="logoutBtn" class="logout" aria-label="Logout">Log out</button>
+        </div>
+        <div class="file-photo">
+          <img src="./Image/adminPhoto.png" alt="adminPhoto">
+        </div>
+      </div>
+    </header>
+
+    <section class="report-section">
+      <!-- Report content will be dynamically added here -->
+    </section>
+
+    <div class="report-actions">
+      <button class="cancel-btn">Cancel</button>
+      <button class="export-btn">Export</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object Recognition - Game Dashboard</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./Image/NHLStenden_Logo.png">
+  <script type="module" src="/js/firebase.js" defer></script>
+  <script type="module" src="/js/auth.js" defer></script>
+  <script type="module" src="/js/object-recognition.js" defer></script>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <img src="./Image/NHLStenden_Logo.png">
+    </div>
+    <nav>
+      <button onclick="window.location.href='index.html'">Game Setting</button>
+      <button onclick="window.location.href='content-settings.html'">Content Setting</button>
+      <button onclick="window.location.href='game-report.html'">Game Report</button>
+      <button class="active">Object Recognition</button>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <header>
+      <h1>Object Recognition Setting</h1>
+      <div class="user-info">
+        <div class="user-info-text">
+          <span id="username">User Name</span>
+          <span id="user-role" class="user-role">Admin</span>
+          <button id="logoutBtn" class="logout" aria-label="Logout">Log out</button>
+        </div>
+        <div class="file-photo">
+          <img src="./Image/adminPhoto.png" alt="adminPhoto">
+        </div>
+      </div>
+    </header>
+
+    <section class="recognition-section">
+      <div class="object-list">
+        <div class="object-item">
+          <input type="text" placeholder="Name of the Object for Recognition" class="object-name">
+          <div class="upload-areas">
+            <div class="upload-area">
+              <div class="image-placeholder">
+                <img src="#" alt="Image Will be Shown Here" class="preview-image hidden">
+                <span class="placeholder-text">Image Will be Shown Here</span>
+              </div>
+              <div class="upload-info">
+                <div class="supported-formats">Supported formats: JPEG, PNG, JPG</div>
+                <label class="upload-btn">
+                  UPLOAD FILE
+                  <input type="file" class="file-input" accept=".jpg,.jpeg,.png" hidden>
+                </label>
+              </div>
+            </div>
+            <button type="button" class="add-image-btn">+ Add Another Angle</button>
+          </div>
+          <button type="button" class="remove-object">×</button>
+        </div>
+      </div>
+
+      <div class="recognition-actions">
+        <button class="confirm-btn">Confirm</button>
+        <button class="cancel-btn">Cancel</button>
+      </div>
+    </section>
+  </div>
+</body>
+</html> 

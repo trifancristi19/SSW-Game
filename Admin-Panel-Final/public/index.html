@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Dashboard</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" href="./Image/NHLStenden_Logo.png" />
+    <script type="module" src="/js/firebase.js" defer></script>
+    <script type="module" src="/js/auth.js" defer></script>
+    <script type="module" src="/js/dashboard.js" defer></script>
+    <script type="module" src="/js/code-generator.js" defer></script>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">
+        <img src="./Image/NHLStenden_Logo.png" />
+      </div>
+      <nav>
+        <button class="active">Game Setting</button>
+        <button onclick="window.location.href='content-settings.html'">
+          Content Setting
+        </button>
+        <button onclick="window.location.href='game-report.html'">
+          Game Report
+        </button>
+        <button onclick="window.location.href='object-recognition.html'">
+          Object Recognition
+        </button>
+      </nav>
+    </div>
+    <div class="main-content">
+      <header>
+        <h1>Dashboard</h1>
+        <div class="user-info">
+          <div class="user-info-text">
+            <span id="username">User Name</span>
+            <span id="user-role" class="user-role">Admin</span>
+            <button id="logoutBtn" class="logout" aria-label="Logout">
+              Log out
+            </button>
+          </div>
+          <div class="file-photo">
+            <img src="./Image/adminPhoto.png" alt="adminPhoto" />
+          </div>
+        </div>
+      </header>
+      <section class="game-section" id="dashboard-section">
+        <h2>Your Game</h2>
+        <div class="game-tabs">
+          <button class="active">Active</button>
+          <button>Not Active</button>
+          <button class="create">+ Create</button>
+          <button class="generate-code">Generate Code</button>
+        </div>
+        <div class="game-list" id="game-list">
+          <!-- Games will be dynamically rendered here -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Modal for creating a new game -->
+    <div id="create-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Create New Game</h2>
+        <form id="create-form">
+          <label>
+            Game Name:
+            <input type="text" id="game-name" required />
+          </label>
+          <label>
+            Game ID:
+            <input type="text" id="game-id" required />
+          </label>
+          <label>
+            Shuffle Content:
+            <input type="checkbox" id="shuffle-content" />
+          </label>
+          <label>
+            Status:
+            <select id="game-status">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </label>
+          <label>
+            Select Content:
+            <select id="game-content" multiple>
+              <!-- Options will be dynamically populated -->
+            </select>
+          </label>
+          <div class="modal-actions">
+            <button type="submit">Create</button>
+            <button type="button" id="close-modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Edit Game</h2>
+        <form id="edit-form">
+          <label>
+            Game Name:
+            <input type="text" id="edit-game-name" required />
+          </label>
+          <label>
+            Shuffle Content:
+            <input type="checkbox" id="edit-shuffle-content" />
+          </label>
+          <label>
+            Status:
+            <select id="edit-game-status">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </label>
+
+          <fieldset>
+            <legend>Game Content</legend>
+            <div class="content-section">
+              <label>
+                Puzzles:
+                <select id="edit-select-puzzle" multiple>
+                  <!-- Options will be populated dynamically -->
+                </select>
+              </label>
+            </div>
+            <div class="content-section">
+              <label>
+                Quests:
+                <select id="edit-select-quest" multiple>
+                  <!-- Options will be populated dynamically -->
+                </select>
+              </label>
+            </div>
+            <div class="content-section">
+              <label>
+                Quizzes:
+                <select id="edit-select-quiz" multiple>
+                  <!-- Options will be populated dynamically -->
+                </select>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="modal-actions">
+            <button type="submit">Save</button>
+            <button type="button" id="close-edit-modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="details-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Game Details</h2>
+        <div id="game-details-container">
+          <!-- Game details will be dynamically populated here -->
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="close-details-modal">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generate Code Modal -->
+    <div id="generate-code-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Generate Game Code</h2>
+        <label>
+          Select Game:
+          <select id="game-select" required>
+            <!-- Options will be populated dynamically -->
+          </select>
+        </label>
+        <div id="generated-code-container" class="hidden">
+          <h3>Your Game Code:</h3>
+          <div class="code-display">
+            <span id="game-code">----</span>
+            <button type="button" id="copy-code" aria-label="Copy code">
+              📋
+            </button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="generate-code-btn">Generate Code</button>
+          <button type="button" id="close-generate-modal">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/js/firebase.js"></script>
+    <script type="module" src="/js/auth.js"></script>
+    <script type="module" src="/js/dashboard.js"></script>
+    <script type="module" src="/js/code-generator.js"></script>
+  </body>
+</html>

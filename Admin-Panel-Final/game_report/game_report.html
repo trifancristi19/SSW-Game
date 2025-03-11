@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Report</title>
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <link rel="stylesheet" href="../../CSS/styles.css">
+  <link rel="icon" href="../../img/uni_logo.png">
+  <link rel="stylesheet" href="../../CSS/game_report.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar Section -->
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="../../loginAndCommonLayout/picture/NHLStenden_Logo.png" alt="NHL Stenden Logo">
+        </div>
+        <nav class="menu">
+            <button id="game-settings">Game Setting</button>
+            <button id="content-settings">Content Setting</button>
+            <button id="game-report">Game Report</button>
+            <button id="object-recognition">Object Recognition</button>
+        </nav>
+    </aside>
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <!-- Aside Section -->
+        <header>
+            <h2>Dashboard</h2>
+            <div class="user-info">
+                <div class="user-info-text">
+                    <span id="username">User Name</span>
+                    <span id="user-role" class="user-role">Admin</span>
+                    <button id="logoutBtn" class="logout" aria-label="Logout">Log out</button>
+                </div>
+                <div class="file-photo">
+                    <img src="../../loginAndCommonLayout/picture/adminPhoto.png" alt="adminPhoto">
+                </div>
+            </div>
+        </header>
+        <h1>Quiz Results</h1>
+        <div id="results-container"></div>
+        <footer>
+          <div class="btn_container">
+            <button class="button" onclick="printResults()">Export</button>
+            <a href="#" class="button">Cancel</a>
+          </div>
+        </footer>
+    </main>
+  
+          <script>
+            const socket = io('http://172.20.10.2:3000'); // Connect to the server
+            // Function to display quiz results
+            function displayResults(results) {
+              const container = document.getElementById('results-container');
+              container.innerHTML = ''; // Clear existing results
+
+              // Create a container for the top 3 players
+              const top3Container = document.createElement('div');
+              top3Container.className = 'top3_divcontainer';
+
+              // Add the "Top 3" title
+              const top3Title = document.createElement('h2');
+              top3Title.textContent = 'Top 3 Winner';
+              top3Container.appendChild(top3Title);
+
+              // Populate the top 3 players
+              results.slice(0, 3).forEach((result, index) => {
+                const top3Div = document.createElement('div');
+                top3Div.className = `top3 top3-${index + 1}`; // Assign a specific class for styling (top3-1, top3-2, top3-3)
+
+                top3Div.innerHTML = `
+                  <p><strong>Player:</strong> ${result.nickname}</p>
+                  <p><strong>Score:</strong> ${result.score} / ${result.total}</p>
+                  <p class="correct"><strong>Correct</strong></p> ${result.correctPercentage}%
+                  <p class="wrong"><strong>Wrong</strong></p> ${result.wrongPercentage}%
+                `;
+                top3Container.appendChild(top3Div);
+              });
+
+              // Append the top 3 container to the main container
+              container.appendChild(top3Container);
+
+              // Create a container for the remaining players
+              const othersContainer = document.createElement('div');
+              othersContainer.className = 'others-container';
+
+              // Populate the remaining players
+              results.slice(3).forEach((result) => {
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'result';
+
+                resultDiv.innerHTML = `
+                 <p><strong>Player:</strong> ${result.nickname}</p>
+                  <p><strong>Score:</strong> ${result.score} / ${result.total}</p>
+                  <p class="correct"><strong>Correct</strong></p> ${result.correctPercentage}%
+                  <p class="wrong"><strong>Wrong</strong></p> ${result.wrongPercentage}%
+                `;
+                othersContainer.appendChild(resultDiv);
+              });
+
+              // Append the remaining players container to the main container
+              container.appendChild(othersContainer);
+            }
+
+            // Fetch initial results from the server
+            async function fetchResults() {
+              try {
+                const response = await fetch('http://172.20.10.2:3000/results');
+                if (!response.ok) {
+                  throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const results = await response.json();
+                displayResults(results);
+              } catch (error) {
+                console.error('Error fetching results:', error.message);
+              }
+            }
+
+            // Listen for real-time updates
+            socket.on('fileUpdated', (updatedResults) => {
+              console.log('Real-time update received:', updatedResults);
+              displayResults(updatedResults);
+            });
+
+            // Print the results
+            function printResults() {
+              window.print();
+            }
+
+            // Fetch results on page load
+            document.addEventListener('DOMContentLoaded', fetchResults);
+          </script>
+        
+</div>
+<div id="modalContainer"></div>
+<script type="module" src="../../loginAndCommonLayout/"></script>
+  
+</body>
+</html>

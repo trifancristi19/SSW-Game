@@ -1,0 +1,244 @@
+[
+  {
+    "nickname": "Player1",
+    "score": 2,
+    "total": 3,
+    "timestamp": 1732831315013
+  },
+  {
+    "nickname": "PhanYennn",
+    "score": 2,
+    "total": 3,
+    "timestamp": 1734279311502,
+    "correctPercentage": "66.67",
+    "wrongPercentage": "33.33"
+  },
+  {
+    "nickname": "YenPhan2",
+    "score": 2,
+    "total": 3,
+    "timestamp": 1734284195436,
+    "correctPercentage": "66.67",
+    "wrongPercentage": "33.33"
+  },
+  {
+    "nickname": "YenPhan456",
+    "score": 2,
+    "total": 3,
+    "timestamp": 1734347191682,
+    "correctPercentage": "66.67",
+    "wrongPercentage": "33.33"
+  },
+  {
+    "nickname": "yenphan",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1732634074892
+  },
+  {
+    "nickname": "Guest",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1732831724017
+  },
+  {
+    "nickname": "hhh",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1734272839601,
+    "correctPercentage": "33.33",
+    "wrongPercentage": "66.67"
+  },
+  {
+    "nickname": "YenPhan3",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1734284426141,
+    "correctPercentage": "33.33",
+    "wrongPercentage": "66.67"
+  },
+  {
+    "nickname": "YenPhan4",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1734284695910,
+    "correctPercentage": "33.33",
+    "wrongPercentage": "66.67"
+  },
+  {
+    "nickname": "YenPhan123",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1734301152831,
+    "correctPercentage": "33.33",
+    "wrongPercentage": "66.67"
+  },
+  {
+    "nickname": "YenPhan111",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1734345405789,
+    "correctPercentage": "33.33",
+    "wrongPercentage": "66.67"
+  },
+  {
+    "nickname": "YenPhan234",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1734346166494,
+    "correctPercentage": "33.33",
+    "wrongPercentage": "66.67"
+  },
+  {
+    "nickname": "YenPhan678",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1734347772306,
+    "correctPercentage": "33.33",
+    "wrongPercentage": "66.67"
+  },
+  {
+    "nickname": "YenPhannn",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1736494291795,
+    "correctPercentage": "33.33",
+    "wrongPercentage": "66.67"
+  },
+  {
+    "nickname": "YenPhan",
+    "score": 1,
+    "total": 3,
+    "timestamp": 1736495098750,
+    "correctPercentage": "33.33",
+    "wrongPercentage": "66.67"
+  },
+  {
+    "nickname": "Guest",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1732832253418,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "Yen Phan",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734271044472,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "YenPhan",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734271688457,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "YenPhann",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734271859322,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "hhh",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734271951965,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "YenPhannnn",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734272166138,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "bb",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734272385690,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "hhhhhhh",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734272405244,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "ttt",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734277789969,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "ddd",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734278503644,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "PhanYen",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734279195793,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "YenPhan1",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734283980694,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "yenPhan",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734300976428,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "YenPhan234",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1734301630941,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "YenPhan01092025",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1736427672271,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  },
+  {
+    "nickname": "YenPhan1708",
+    "score": 0,
+    "total": 3,
+    "timestamp": 1736463021693,
+    "correctPercentage": "0.00",
+    "wrongPercentage": "100.00"
+  }
+]

@@ -1,0 +1,1775 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'CeraBold', 'CeraRegular', serif;
+}
+
+@font-face {
+  font-family: 'CeraBold';
+  src: url("../font/CeraPRO-Bold.otf");
+}
+
+@font-face {
+  font-family: 'CeraRegular';
+  src: url("../font/CeraPRO-Regular.otf");
+}
+
+body {
+  margin: 0;
+  /*display: flex;*/
+  height: 100vh;
+  color: #333;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.sidebar {
+  grid-column: 1/ 2;
+  background-color: #005aa7;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar .logo img {
+  width: 100%;
+  margin-bottom: 20px;
+  max-width: 200px;
+}
+
+.sidebar nav button {
+  /*background: none;*/
+  background-color: #00a7a2;
+  border: none;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.sidebar nav button.active {
+  /*background-color: rgba(255, 255, 255, 0.1);*/
+  background-color: #fff;
+  border-radius: 4px;
+  color: #00a7a2;
+}
+
+.logout {
+  background-color: #005aa7;
+  color: #ffffff;
+  padding: 9%;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.8em;
+  width: 68px;
+}
+
+.main-content {
+  /*flex: 1;*/
+  grid-column: 2/ -1;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header .user-info p {
+  margin: 0;
+}
+
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-info .file-photo img {
+  width: 75px; /* Adjust size of the photo as needed */
+  height: 75px;
+  border-radius: 60%; /* Make the photo circular */
+  background-color: #00a7a2;
+  margin-top: 9px;
+}
+
+.game-section {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.game-section .game-tabs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.game-tabs button {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.game-tabs .active {
+  color: #00bf9a;
+  border-bottom: 2px solid #00bf9a;
+}
+
+.game-tabs button.create {
+  margin-left: auto;
+  background-color: #00bf9a;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.game-tabs button.create:hover {
+  background-color: #00a88a;
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.game-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.game-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.game-card h3 {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.game-card .game-id {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+  padding: 4px 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.game-card .game-info {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.game-card .game-info label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #555;
+  font-size: 0.95em;
+}
+
+.game-card .game-info input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #00bf9a;
+}
+
+.game-card .associated-content {
+  margin-bottom: 15px;
+  flex: 1;
+  padding: 15px 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.game-card .associated-content h4 {
+  margin: 0 0 10px 0;
+  color: #444;
+  font-size: 16px;
+}
+
+.game-card .associated-content ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #666;
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.game-card .associated-content li {
+  margin-bottom: 5px;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.game-card .associated-content li:last-child {
+  border-bottom: none;
+}
+
+.game-card .card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.game-card .card-actions button {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: opacity 0.2s;
+}
+
+.game-card .card-actions button:hover {
+  opacity: 0.9;
+}
+
+.game-card .card-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: opacity 0.2s;
+  flex: 1;
+}
+
+.game-card .card-actions button:hover {
+  opacity: 0.9;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 600px;
+  text-align: center;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: #00bf9a;
+  color: white;
+}
+
+.modal-actions button#close-modal {
+  background-color: #ff4444;
+  color: white;
+}
+
+.modal-actions button:hover {
+  opacity: 0.9;
+}
+
+.content-section {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.content-section.hidden {
+  display: none;
+}
+
+.content-tabs {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+}
+
+.content-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.create-btn {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.create-btn:hover {
+  background-color: #0052a3;
+}
+
+.content-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 10px;
+}
+
+.content-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+}
+
+.content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.content-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.content-card .content-id {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+}
+
+.content-card .content-type {
+  display: inline-block;
+  padding: 4px 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  color: #495057;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+}
+
+.content-card .content-description {
+  margin-bottom: 20px;
+  color: #495057;
+  flex: 1;
+}
+
+.content-card .features {
+  margin: 15px 0;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.content-card .features div {
+  margin: 5px 0;
+  color: #666;
+}
+
+.content-card .card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.card-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: opacity 0.2s;
+}
+
+.card-actions button:hover {
+  opacity: 0.9;
+}
+
+.card-actions .details-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.card-actions .edit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.card-actions .delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Content Modal Styles */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.form-group textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.form-group input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch label {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: .4s;
+}
+
+.toggle-switch label:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+.toggle-switch input:checked + label {
+  background-color: #00bf9a;
+}
+
+.toggle-switch input:checked + label:before {
+  transform: translateX(26px);
+}
+
+/* Select Dropdown */
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Modal Action Buttons */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.save-btn, .cancel-btn {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.save-btn {
+  background-color: #00bf9a;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #ff4444;
+  color: white;
+}
+
+/* Quiz Form Styles */
+.choice-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.choice-item input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.choice-item .choice-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.remove-choice {
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.add-choice-btn {
+  background: #00bf9a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Puzzle Form Styles */
+.image-choice-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.image-choice-item input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.image-upload-area {
+  flex: 1;
+  position: relative;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.placeholder-text {
+  color: #6c757d;
+  font-size: 1.1em;
+  text-align: center;
+  padding: 20px;
+}
+
+.upload-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.supported-formats {
+  color: #6c757d;
+  font-size: 0.9em;
+}
+
+.upload-btn {
+  background-color: #00a19c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-weight: 500;
+}
+
+.upload-btn:hover {
+  background-color: #008783;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.remove-image {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 59, 48, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.remove-image:hover {
+  background: rgba(255, 59, 48, 1);
+  transform: scale(1.1);
+}
+
+.add-image-btn {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #00a19c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+.add-image-btn:hover {
+  background-color: #008783;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.object-name {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 1em;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.object-name:focus {
+  outline: none;
+  border-color: #00a19c;
+  box-shadow: 0 0 0 2px rgba(0, 161, 156, 0.1);
+}
+
+.upload-areas {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 20px 0;
+}
+
+/* Game Report Styles */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-bar {
+  background: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 300px;
+  font-size: 16px;
+}
+
+.report-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  min-height: 500px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.report-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.report-actions button {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.export-btn {
+  background-color: #00bf9a;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #ff4444;
+  color: white;
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination button.active {
+  background: #00bf9a;
+  color: white;
+}
+
+.pagination button:hover:not(.active) {
+  background: #e0e0e0;
+}
+
+/* Results Table Styles */
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.results-table th,
+.results-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.results-table th {
+  background-color: #00bf9a;
+  color: white;
+  font-weight: 500;
+}
+
+.results-table tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.results-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Object Recognition Styles */
+.recognition-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.object-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.object-item {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+}
+
+.object-name {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.upload-area {
+  position: relative;
+}
+
+.remove-object {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.add-object-btn {
+  width: 100%;
+  padding: 12px;
+  background: #00bf9a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.recognition-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.confirm-btn {
+  background-color: #00bf9a;
+  color: white;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Login Page Styles */
+.login-page {
+  background: url(../Image/Sign-in.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  /*padding: 20px;*/
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 16px;
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sign-in-btn {
+  width: 100%;
+  padding: 12px;
+  background: #0256b3;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sign-in-btn:hover {
+  background: #00a7a2;
+}
+
+/* Game tabs styling update */
+.game-tabs {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.game-tabs button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  background: none;
+  color: #666;
+}
+
+.game-tabs button.active {
+  color: #00bf9a;
+  border-bottom: 2px solid #00bf9a;
+}
+
+.game-tabs button.create {
+  margin-left: auto;
+  background-color: #00bf9a;
+  color: white;
+  padding: 8px 20px;
+}
+
+/* Add scrollbar styling for the associated content */
+.game-card .associated-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.game-card .associated-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.game-card .associated-content::-webkit-scrollbar-thumb {
+  background: #00bf9a;
+  border-radius: 3px;
+}
+
+.game-card .associated-content::-webkit-scrollbar-thumb:hover {
+  background: #00a88a;
+}
+
+/* Create Game Form Styles */
+#create-form {
+  text-align: left;
+  padding: 20px;
+}
+
+#create-form label {
+  display: block;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #444;
+}
+
+#create-form input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 14px;
+  background: #f8f9fa;
+}
+
+#create-form input[type="checkbox"] {
+  margin-left: 10px;
+  width: 16px;
+  height: 16px;
+  accent-color: #00bf9a;
+}
+
+#create-form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 14px;
+  background: #f8f9fa;
+}
+
+#create-form select[multiple] {
+  height: 200px;
+  padding: 10px;
+}
+
+#create-form select[multiple] option {
+  padding: 8px;
+  margin: 2px 0;
+  border-radius: 4px;
+}
+
+#create-form select[multiple] option:hover {
+  background-color: #e9ecef;
+}
+
+#create-form select[multiple] option:checked {
+  background-color: #00bf9a;
+  color: white;
+}
+
+/* Scrollbar styling for modal */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #00bf9a;
+  border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #00a88a;
+}
+
+/* Content Details Modal Styles */
+.content-details {
+  padding: 20px;
+}
+
+.content-details p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.content-details .content-type {
+  font-size: 1.2em;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.content-details .question-section,
+.content-details .description-section,
+.content-details .choices-section,
+.content-details .images-section,
+.content-details .tracking-section,
+.content-details .timestamp-section {
+  margin: 15px 0;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 5px;
+}
+
+.content-details ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+.content-details li {
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.content-details .correct-answer {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.content-details .image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.content-details .image-item {
+  position: relative;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.content-details .image-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+}
+
+.content-details .correct-label {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #28a745;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.8em;
+}
+
+.content-details .timestamp-section {
+  font-size: 0.9em;
+  color: #6c757d;
+}
+
+/* Add these styles for the edit modal */
+.content-selection {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+}
+
+.content-selection legend {
+  font-weight: 500;
+  color: #444;
+  padding: 0 10px;
+}
+
+.content-selection h3 {
+  margin: 15px 0 10px;
+  color: #333;
+  font-size: 16px;
+}
+
+.current-content {
+  margin-bottom: 20px;
+}
+
+.current-content-list {
+  background: #f8f9fa;
+  border-radius: 4px;
+  padding: 10px;
+  min-height: 50px;
+}
+
+.content-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.content-item .content-type {
+  font-weight: bold;
+  color: #00bf9a;
+  margin-right: 10px;
+  min-width: 60px;
+}
+
+.content-item .content-description {
+  flex: 1;
+}
+
+.content-item .remove-content {
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+#edit-content-select {
+  width: 100%;
+  min-height: 200px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  color: #333;
+}
+
+#edit-content-select option {
+  padding: 8px;
+  margin: 2px 0;
+  border-radius: 4px;
+}
+
+#edit-content-select option:hover {
+  background-color: #f0f0f0;
+}
+
+#edit-content-select option:checked {
+  background-color: #00bf9a;
+  color: white;
+}
+
+.helper-text {
+  color: #666;
+  font-size: 0.9em;
+  margin: 5px 0 10px;
+  font-style: italic;
+}
+
+/* Update modal size */
+#edit-modal .modal-content {
+  width: 800px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+}
+
+/* Update button styles */
+#edit-form .modal-actions button {
+  padding: 12px 32px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#edit-form .modal-actions button[type="submit"] {
+  background-color: #00bf9a;
+  color: white;
+}
+
+#edit-form .modal-actions button[type="button"] {
+  background-color: #ff4444;
+  color: white;
+}
+
+#edit-form .modal-actions button:hover {
+  opacity: 0.9;
+}
+
+/* Add styles for better visibility */
+.content-selection select {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #333;
+}
+
+.content-selection select option {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Add or update these styles */
+#edit-form {
+  text-align: left;
+  padding: 20px;
+}
+
+#edit-form label {
+  display: block;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #444;
+}
+
+#edit-form input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 14px;
+  background: #f8f9fa;
+}
+
+#edit-form input[type="checkbox"] {
+  margin-left: 10px;
+  width: 16px;
+  height: 16px;
+  accent-color: #00bf9a;
+}
+
+#edit-form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 14px;
+  background: #f8f9fa;
+}
+
+#edit-form select[multiple] {
+  height: 200px;
+  padding: 10px;
+}
+
+#edit-form select[multiple] option {
+  padding: 8px;
+  margin: 2px 0;
+  border-radius: 4px;
+}
+
+#edit-form select[multiple] option:hover {
+  background-color: #e9ecef;
+}
+
+#edit-form select[multiple] option:checked {
+  background-color: #00bf9a;
+  color: white;
+}
+
+/* Modal base styles */
+.modal .modal-content {
+  max-width: 800px;  /* Increased from default */
+  width: 90%;
+  margin: 30px auto;
+  padding: 30px;     /* Increased padding */
+  background: white;
+  border-radius: 8px;
+}
+
+/* Details modal specific styles */
+#details-modal .content-details {
+  padding: 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.detail-row {
+  margin: 25px 0;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.detail-row strong {
+  font-size: 1.1em;
+  color: #333;
+}
+
+.detail-row span {
+  font-size: 1.1em;
+}
+
+.detail-content-list {
+  margin-top: 15px;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.detail-content-list ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.detail-content-list li {
+  margin: 15px 0;
+  padding: 12px 15px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  text-align: center;
+}
+
+/* Center the modal title */
+#details-modal .modal-content h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Modal actions styling */
+.modal-actions {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.generate-code {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.code-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+#game-code {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#copy-code {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#generated-code-container {
+    margin-top: 20px;
+}
+
+#generated-code-container.hidden {
+    display: none;
+}
+
+/* Styles for puzzle images in details view */
+.details-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.details-image-item {
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 4px;
+  border-radius: 4px;
+  width: 120px;  /* Increased from 80px to 120px */
+  height: 120px; /* Increased from 80px to 120px */
+}
+
+.details-image-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.details-image-item.correct-answer {
+  border-color: #4CAF50;
+}
+
+.details-image-item .correct-badge {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+/* Make edit view images consistent with details view */
+.image-upload-area .preview-image {
+  width: 120px;  /* Increased from 80px to 120px */
+  height: 120px; /* Increased from 80px to 120px */
+  object-fit: contain;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.placeholder-text {
+  color: #6c757d;
+  font-size: 1.1em;
+  text-align: center;
+  padding: 20px;
+}
+
+.upload-area {
+  position: relative;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.upload-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.supported-formats {
+  color: #6c757d;
+  font-size: 0.9em;
+}
+
+.upload-btn {
+  background-color: #00a19c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-weight: 500;
+}
+
+.upload-btn:hover {
+  background-color: #008783;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.remove-image {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 59, 48, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.remove-image:hover {
+  background: rgba(255, 59, 48, 1);
+  transform: scale(1.1);
+}
+
+.add-image-btn {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #00a19c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+.add-image-btn:hover {
+  background-color: #008783;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.object-name {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 1em;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.object-name:focus {
+  outline: none;
+  border-color: #00a19c;
+  box-shadow: 0 0 0 2px rgba(0, 161, 156, 0.1);
+}
+
+.upload-areas {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 20px 0;
+}
